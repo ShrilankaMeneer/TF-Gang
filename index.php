@@ -40,7 +40,6 @@ if (isset($_POST["signup"])) {
       $_POST["signup_email"] = "";
       $_POST["signup_password"] = "";
       $_POST["signup_cpassword"] = "";
-
     }
   }
 }
