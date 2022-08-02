@@ -26,14 +26,14 @@ if (isset($_POST["signup"])) {
   $password = mysqli_real_escape_string($conn, md5($_POST["signup_password"]));
   $cpassword = mysqli_real_escape_string($conn, md5($_POST["signup_cpassword"]));
 
-  $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM users WHERE email='$email'"));
+  $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM medewerkers WHERE email='$email'"));
 
   if ($password !== $cpassword) {
     echo "<script>alert('Wachtwoorden matchen niet.');</script>";
   } elseif ($check_email > 0) {
     echo "<script>alert('Email bestaat al in de database.');</script>";
   } else {
-    $sql = "INSERT INTO users (full_name, email, password, admin) VALUES ('$full_name', '$email', '$password', '0')";
+    $sql = "INSERT INTO medewerkers (full_name, email, password, admin) VALUES ('$full_name', '$email', '$password', '0')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
       $_POST["signup_full_name"] = "";
@@ -49,7 +49,7 @@ if (isset($_POST["signin"])) {
   $email = mysqli_real_escape_string($conn, $_POST["email"]);
   $password = mysqli_real_escape_string($conn, md5($_POST["password"]));
 
-  $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email='$email' AND password='$password'");
+  $check_email = mysqli_query($conn, "SELECT id FROM medewerkers WHERE email='$email' AND password='$password'");
 
   if (mysqli_num_rows($check_email) > 0) {
     $row = mysqli_fetch_assoc($check_email);
@@ -69,7 +69,7 @@ if (isset($_POST["signin"])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <title>Sign in & Sign up Form - Pure Coding</title>
+  <title>Tools Forever - Sign up / Sign in</title>
 </head>
 
 <body>
