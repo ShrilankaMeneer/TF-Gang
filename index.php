@@ -2,12 +2,13 @@
 
 include 'config.php';
 
+/*
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+*/
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
@@ -24,16 +25,15 @@ if (isset($_POST["signup"])) {
   $email = mysqli_real_escape_string($conn, $_POST["signup_email"]);
   $password = mysqli_real_escape_string($conn, md5($_POST["signup_password"]));
   $cpassword = mysqli_real_escape_string($conn, md5($_POST["signup_cpassword"]));
-  $token = md5(rand());
 
   $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM users WHERE email='$email'"));
 
   if ($password !== $cpassword) {
-    echo "<script>alert('Password did not match.');</script>";
+    echo "<script>alert('Wachtwoorden matchen niet.');</script>";
   } elseif ($check_email > 0) {
-    echo "<script>alert('Email already exists in out database.');</script>";
+    echo "<script>alert('Email bestaat al in de database.');</script>";
   } else {
-    $sql = "INSERT INTO users (full_name, email, password, token, status) VALUES ('$full_name', '$email', '$password', '$token', '0')";
+    $sql = "INSERT INTO users (full_name, email, password, admin) VALUES ('$full_name', '$email', '$password', '0')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
       $_POST["signup_full_name"] = "";
@@ -41,52 +41,6 @@ if (isset($_POST["signup"])) {
       $_POST["signup_password"] = "";
       $_POST["signup_cpassword"] = "";
 
-      $to = $email;
-      $subject = "Email verification - Pure Coding YouTube";
-
-      $message = "
-      <html>
-      <head>
-      <title>{$subject}</title>
-      </head>
-      <body>
-      <p><strong>Dear {$full_name},</strong></p>
-      <p>Thanks for registration! Verify your email to access our website. Click below link to verify your email.</p>
-      <p><a href='{$base_url}verify-email.php?token={$token}'>Verify Email</a></p>
-      </body>
-      </html>
-      ";
-
-      //Create an instance; passing `true` enables exceptions
-      $mail = new PHPMailer(true);
-
-      try {
-        //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = $smtp['host'];                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = $smtp['user'];                     //SMTP username
-        $mail->Password   = $smtp['pass'];                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = $smtp['port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-        //Recipients
-        $mail->setFrom($my_email);
-        $mail->addAddress($email, $full_name);     //Add a recipient
-
-        //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = $subject;
-        $mail->Body    = $message;
-
-        $mail->send();
-        echo "<script>alert('We have sent a verification link to your email - {$email}.');</script>";
-      } catch (Exception $e) {
-        echo "<script>alert('Mail not sent. Please try again.');</script>";
-      }
-    } else {
-      echo "<script>alert('User registration failed.');</script>";
     }
   }
 }
@@ -95,7 +49,7 @@ if (isset($_POST["signin"])) {
   $email = mysqli_real_escape_string($conn, $_POST["email"]);
   $password = mysqli_real_escape_string($conn, md5($_POST["password"]));
 
-  $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email='$email' AND password='$password' AND status='1'");
+  $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email='$email' AND password='$password'");
 
   if (mysqli_num_rows($check_email) > 0) {
     $row = mysqli_fetch_assoc($check_email);
