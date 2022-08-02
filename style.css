@@ -19,104 +19,6 @@ body{
     min-height: 100vh;
     background: #fff;
 }
-.wrapper{
-    background: crimson;
-    max-width: 450px;
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
-    0 32px 64px -48px rgba(0, 0, 0, 0.5);
-}
-
-/* Login & Signup Form CSS Start */
-.form{
-    padding: 25px 30px;
-}
-.form header{
-    font-size: 25px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #F8B195;
-}
-.form form{
-    margin: 20px 0;
-}
-.form form .error-text{
-    color: #721c24;
-    padding: 8px 10px;
-    text-align: center;
-    border-radius: 5px;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    margin-bottom: 10px;
-    display: none;
-}
-.form form .name-details{
-    display: flex;
-}
-.form .name-details .field:first-child{
-    margin-right: 10px;
-}
-.form .name-details .field:last-child{
-    margin-left: 10px;
-}
-.form form .field{
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: column;
-    position: relative;
-}
-.form form .field label{
-    margin-bottom: 2px;
-}
-.form form .input input{
-    height: 40px;
-    width: 100%;
-    font-size: 16px;
-    padding: 0 10px;
-    border-radius: 5px;
-    border: 1px solid #F8B195;
-}
-.form form .field input{
-    outline: none;
-}
-.form form .image input{
-    font-size: 17px;
-}
-.form form .button input{
-    height: 45px;
-    border: none;
-    color: #F8B195;
-    font-size: 17px;
-    background: #333;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 13px;
-}
-.form form .field i{
-    position: absolute;
-    right: 15px;
-    top: 70%;
-    color: #F8B195;
-    cursor: pointer;
-    transform: translateY(-50%);
-}
-.form form .field i.active::before{
-    color: #333;
-    content: "\f070";
-}
-.form .link{
-    text-align: center;
-    margin: 10px 0;
-    font-size: 17px;
-}
-.form .link a{
-    color: #333;
-}
-.form .link a:hover{
-    text-decoration: underline;
-}
-
 .container {
   position: relative;
   width: 100%;
@@ -234,14 +136,14 @@ form.sign-in-form {
 }
 
 .social-icon:hover {
-  background: #4481eb;
-  border-color: #4481eb;
+  background: #beb529;
+  border-color: #beb529;
   color: white;
 }
 
 .btn {
   width: 380px;
-  background-color: #5995fd;
+  background-color: #beb529;
   border: none;
   outline: none;
   height: 49px;
@@ -257,11 +159,11 @@ form.sign-in-form {
 
 .btn.transparent:hover {
   background-color: white;
-  color: #4d84e2;
+  color: #beb529;
 }
 
 .btn:hover {
-  background-color: #4d84e2;
+  background-color: #beb529;
 }
 .panels-container {
   position: absolute;
@@ -281,7 +183,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, #beb529 0%, #beb529 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
