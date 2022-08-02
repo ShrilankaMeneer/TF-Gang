@@ -6,6 +6,7 @@ if (!isset($_SESSION["user_id"])) {
     header("Location: index.php");
 }
 
+
 include 'config.php';
 ?>
 
@@ -23,6 +24,7 @@ include 'config.php';
 
 <body class="profile-page">
     <div class="wrapper">
+      <p><b>Medewerker: </b><!--<?php /* if (!isset($_SESSION["full_name"])) { $medewerker = $_SESSION['full_name']; echo '<p>Welcome, $medewerker</p>'; */ ?>--></p>
         <p>Uitloggen?
             <a href="logout.php">Klik hier</a>
         </p>
