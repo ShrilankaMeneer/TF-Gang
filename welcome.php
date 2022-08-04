@@ -24,6 +24,10 @@ include 'config.php';
 
 <body class="profile-page">
   <div class="wrapper">
+    <p><b>Medewerker: </b><!--<?php /* if (!isset($_SESSION["full_name"])) { $medewerker = $_SESSION['full_name']; echo '<p>Welcome, $medewerker</p>'; */ ?>--></p>
+<p>Uitloggen?
+    <a href="logout.php">Klik hier</a>
+</p>
 <h2 class="title">Menu</h2>
 <div class="btns-wrapper">
   <div class="btn" onclick="showVoorraad()">
