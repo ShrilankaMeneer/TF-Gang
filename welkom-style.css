@@ -83,7 +83,15 @@ h2 {
 }
 
 .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   text-align: center;
   width: 100%;
+}
+
+.gebruikersnaam {
+  display: block !important;
+  color: black !important;
 }
