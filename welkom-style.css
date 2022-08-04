@@ -42,7 +42,7 @@ h2 {
 
 .title::after {
     content: '';
-    background: #EC1C24;
+    background: #f8b195;
     width: 80px;
     height: 5px;
     border-radius: 5px;
@@ -53,6 +53,9 @@ h2 {
 }
 
 .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 600;
     line-height: 1.2;
     position: relative;
@@ -71,8 +74,8 @@ h2 {
 .btn:hover {
     cursor: pointer;
     background: white;
-    color: #EC1C24;
-    box-shadow: 0 0 20px #EC1C24;
+    color: #f8b195;
+    box-shadow: 0 0 20px #f8b195;
 }
 
 .icon {
