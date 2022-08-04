@@ -11,6 +11,8 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+ /*login en registreer*/
+
 .container {
   position: relative;
   width: 100%;
@@ -373,3 +375,5 @@ form.sign-in-form {
     left: 50%;
   }
 }
+
+/* welkom pagina*/
