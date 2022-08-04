@@ -41,7 +41,14 @@ include 'config.php';
     <h2 class="title" id="title">Voorraad</h2>
 
     <div class="box" id="voorraad">
-        <p>testvoorraad</p>
+        <form class="voorraad" action="index.html" method="post">
+          <label for="locatie">Locatie</label>
+            <select class="locatie" name="locatie">
+              <option value="almere">Almere</option>
+              <option value="rotterdam">Rotterdam</option>
+              <option value="eindhoven">Eindhoven</option>
+            </select>
+        </form>
     </div>
     <div class="box" id="verwijderen">
         <p>testverwijderen</p>

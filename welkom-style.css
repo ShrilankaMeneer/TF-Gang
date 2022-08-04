@@ -85,4 +85,5 @@ h2 {
 .box {
   margin: auto;
   text-align: center;
+  width: 100%;
 }
