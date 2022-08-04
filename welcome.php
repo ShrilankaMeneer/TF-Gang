@@ -1,15 +1,3 @@
-<?php
-
-session_start();
-
-if (!isset($_SESSION["user_id"])) {
-    header("Location: index.php");
-}
-
-
-include 'config.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,17 +5,29 @@ include 'config.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="welkom-style.css">
     <title>Tools Forever - Magazijn</title>
 </head>
 
 <body class="profile-page">
   <div class="wrapper">
-    <p><b>Medewerker: </b><!--<?php /* if (!isset($_SESSION["full_name"])) { $medewerker = $_SESSION['full_name']; echo '<p>Welcome, $medewerker</p>'; */ ?>--></p>
-<p>Uitloggen?
-    <a href="logout.php">Klik hier</a>
-</p>
+    <?php
+
+    session_start();
+
+    include 'config.php';
+
+    if (!isset($_SESSION["user_id"])) {
+        header("Location: index.php");
+    }
+
+
+    if (isset($_SESSION['full_name'])){
+
+        echo "<div class='gebruikersnaam'><p><b>Medewerker: </b></p> Welkom, " . $_SESSION['full_name'] . " <a href='logout.php'>Log uit</a> <div>";
+    }
+    ?>
+
 <h2 class="title">Menu</h2>
 <div class="btns-wrapper">
   <div class="btn" onclick="showVoorraad()">
