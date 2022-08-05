@@ -20,7 +20,7 @@
     include 'config.php';
 
     function getFullName() {
-    return isset($_SESSION['user_full_name']) ? $_SESSION['user_full_name'] : '';
+    return isset($_SESSION['username']) ? $_SESSION['username'] : '';
     }
 
     if (!isset($_SESSION["user_id"])) {
@@ -55,6 +55,13 @@
               <option value="rotterdam">Rotterdam</option>
               <option value="eindhoven">Eindhoven</option>
             </select>
+<br>
+            <label for="product">Product</label>
+              <select class="product" name="product">
+                <option value="almere">Almere</option>
+                <option value="rotterdam">Rotterdam</option>
+                <option value="eindhoven">Eindhoven</option>
+              </select>
         </form>
     </div>
     <div class="box" id="verwijderen">
