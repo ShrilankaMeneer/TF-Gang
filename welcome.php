@@ -15,17 +15,24 @@
 
     session_start();
 
+    error_reporting(0);
+
     include 'config.php';
+
+    function getFullName() {
+    return isset($_SESSION['user_full_name']) ? $_SESSION['user_full_name'] : '';
+    }
 
     if (!isset($_SESSION["user_id"])) {
         header("Location: index.php");
     }
 
 
-    if (isset($_SESSION['full_name'])){
+    if (isset($_SESSION['user_id'])){
 
-        echo "<div class='gebruikersnaam'><p><b>Medewerker: </b></p> Welkom, " . $_SESSION['full_name'] . " <a href='logout.php'>Log uit</a> <div>";
+        echo "<div class='gebruikersnaam'><p><b>Medewerker: </b></p> Welkom, " . getFullName() . " <a href='logout.php'>Log uit</a> <div>";
     }
+
     ?>
 
 <h2 class="title">Menu</h2>
